@@ -1,8 +1,62 @@
+
 /*
 multi
 line
 comment
 */
+* {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+body {
+    background: #FBEAEB;
+    background-image: linear-gradient(0.45turn, rgba(251, 234, 235, 0.5), rgba(47, 60, 126, 0.5)), url("../img/light-pink.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+h1, h2 {
+    color: #2F3C7E;
+    text-decoration: underline;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+table, tr {
+    border: 1px black solid;
+    padding: 1em;
+    background: #2F3C7E;
+    color: #FBEAEB;
+}
+
+td {
+    border-bottom: 1px black solid;
+    padding: 0.2em;
+    font-size: 1em;
+}
+a {
+    text-decoration: none;
+    font-size: 1.5em;
+    color: #2F3C7E;
+}
+
+a:hover {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+footer{
+    margin-bottom: 50px;
+}
 
 .fancy-header {
     color: purple; /* single line comment */
