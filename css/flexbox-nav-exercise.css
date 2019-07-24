@@ -8,7 +8,7 @@ a {
     text-decoration: none;
     color: black;
     display: inline-block;
-    font-family: 'Montserrat', 'Work Sans', sans-serif;
+    font-family: 'Work Sans', sans-serif;
 }
 
 a:hover {
@@ -33,6 +33,14 @@ ul li {
 li:nth-child(1) {
     font-size: 3em;
     margin: auto;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    position: absolute;
+    width: 100%;
+}
+
+.logo {
+    margin: auto;
 }
 
 li:nth-child(2) {
@@ -51,8 +59,14 @@ li:nth-child(5) {
     order: -1;
 }
 
+li:nth-child(6) {
+    margin-left: auto;
+}
+
 .container {
     height: 4.25em;
     background: #C1C1C1;
 }
+
+
 
