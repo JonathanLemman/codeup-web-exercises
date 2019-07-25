@@ -12,7 +12,7 @@
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
     grid-gap: .4em;
-    margin: 50px auto;
+    margin: auto;
     padding: .4em;
     border: 10px solid #FFFFFF;
     border-radius: 10px;
