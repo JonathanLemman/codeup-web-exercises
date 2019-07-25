@@ -12,7 +12,7 @@
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
     grid-gap: .4em;
-    margin: auto;
+    margin: 50px auto;
     padding: .4em;
     border: 10px solid #FFFFFF;
     border-radius: 10px;
@@ -63,3 +63,4 @@
     background: #F5CC47;
     grid-area: -2 / -1 / -4 / -5;
 }
+
