@@ -42,89 +42,92 @@
     </div>
     <h2>Build your own pizza!</h2>
     <hr>
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" id="size-tab" data-toggle="tab" href="#size" role="tab" aria-controls="size" aria-selected="true">
                 <span class="badge badge-pill badge-secondary">1</span>
                 Size and Crust
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" id="cheese-tab" data-toggle="tab" href="#cheese" role="tab" aria-controls="cheese" aria-selected="false">
                 <span class="badge badge-pill badge-secondary">2</span>
                 Cheese and Sauce
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" id="topping-tab" data-toggle="tab" href="#topping" role="tab" aria-controls="topping" aria-selected="false">
                 <span class="badge badge-pill badge-secondary">3</span>
                 Toppings
             </a>
         </li>
     </ul>
+
 <!-- Size and Crust Main Card -->
     <form method="post" action="https://request-inspector.glitch.me/">
-    <div class="card">
-        <div class="card-header bg-primary text-white">
-            Choose size and crust
-        </div>
-        <div class="card-body">
-<!-- First Card in Body -->
-            <div class="card mb-3">
-                <div class="card-header">
-                    Hand tossed
-                </div>
-                <div class="card-body">
-                    Garlic seasoned crust with rich, buttery taste.
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item pl-4">
-                        <input class="form-check-input" type="radio" name="handTossed" id="hand-small" value="small">
-                        <label class="form-check-label" for="hand-small">
-                        Small(10")
-                        </label>
-                    </li>
-                    <li class="list-group-item pl-4">
-                        <input class="form-check-input" type="radio" name="handTossed" id="hand-medium" value="medium">
-                        <label class="form-check-label" for="hand-medium">
-                        Medium(12")
-                        </label>
-                    </li>
-                </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="card tab-pane fade show active" id="size" role="tabpanel" aria-labelledby="size-tab">
+            <div class="card-header bg-primary text-white">
+                Choose size and crust
             </div>
-    <!-- Second Card in Body -->
-            <div class="card">
-                <div class="card-header">
-                    Crispy Thin
-                </div>
-                <div class="card-body">
-                    Thin enough for optimum crispy to crunchy ratio.
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item pl-4">
-                        <input class="form-check-input" type="radio" name="crispyThin" id="crispy-medium" value="medium">
-                        <label class="form-check-label" for="crispy-medium">
+            <div class="card-body">
+    <!-- First Card in Body -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Hand tossed
+                    </div>
+                    <div class="card-body">
+                        Garlic seasoned crust with rich, buttery taste.
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item pl-4">
+                            <input class="form-check-input" type="radio" name="handTossed" id="hand-small" value="small">
+                            <label class="form-check-label" for="hand-small">
+                            Small(10")
+                            </label>
+                        </li>
+                        <li class="list-group-item pl-4">
+                            <input class="form-check-input" type="radio" name="handTossed" id="hand-medium" value="medium">
+                            <label class="form-check-label" for="hand-medium">
                             Medium(12")
-                        </label>
-                    </li>
-                    <li class="list-group-item pl-4">
-                        <input class="form-check-input" type="radio" name="crispyThin" id="crispy-large" value="large">
-                        <label class="form-check-label" for="crispy-large">
-                            Large(14")
-                        </label>
-                    </li>
-                </ul>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+        <!-- Second Card in Body -->
+                <div class="card">
+                    <div class="card-header">
+                        Crispy Thin
+                    </div>
+                    <div class="card-body">
+                        Thin enough for optimum crispy to crunchy ratio.
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item pl-4">
+                            <input class="form-check-input" type="radio" name="crispyThin" id="crispy-medium" value="medium">
+                            <label class="form-check-label" for="crispy-medium">
+                                Medium(12")
+                            </label>
+                        </li>
+                        <li class="list-group-item pl-4">
+                            <input class="form-check-input" type="radio" name="crispyThin" id="crispy-large" value="large">
+                            <label class="form-check-label" for="crispy-large">
+                                Large(14")
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Main Card Footer -->
+            <div class="card-footer text-right">
+                <button type="button" class="btn btn-primary" >Next Step ></button>
             </div>
         </div>
-        <!-- Main Card Footer -->
-        <div class="card-footer text-right">
-            <button type="button" class="btn btn-primary">Next Step ></button>
-        </div>
-    </div>
+
 
 
     <!-- Cheese and Sauce Main Card -->
-    <div class="card mt-3">
+    <div class="card tab-pane fade" id="cheese" role="tabpanel" aria-labelledby="cheese-tab">
         <div class="card-header bg-primary text-white">
             Choose Cheese and Sauce
         </div>
@@ -180,8 +183,9 @@
             </div>
         </div>
     </div>
+
     <!-- Choose Topping Main Card-->
-    <div class="card mt-3">
+    <div class="card tab-pane fade" id="topping" role="tabpanel" aria-labelledby="topping-tab">
         <div class="card-header bg-primary text-white">
             Choose Toppings
         </div>
@@ -263,7 +267,9 @@
             </button>
         </div>
     </div>
+    </div>
     </form>
+
 </div>
 
 
