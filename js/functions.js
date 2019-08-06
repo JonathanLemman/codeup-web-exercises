@@ -112,6 +112,6 @@ function applyDiscount(price, discount) {
     return price - price * discount;
 }
 
-console.log(applyDiscount(100, .2), 80);
-console.log(applyDiscount(45.99, 0.12), 40.4712);
+console.log(applyDiscount(100, .2));
+console.log(applyDiscount(45.99, 0.12));
 
