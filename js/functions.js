@@ -10,7 +10,7 @@
  */
 
 function sayHello(name) {
-    return "Hello, " + name;
+    return "Hello, " + name + "!";
 }
 
 
@@ -109,7 +109,7 @@ alert("You should tip: $" + calculateTip(billAmount, percentAmount));
  */
 
 function applyDiscount(price, discount) {
-    return price - price * discount;
+    return price - (price * discount);
 }
 
 // Test
