@@ -16,6 +16,33 @@
  * Can you refactor your code to use functions?
  */
 
+function askUser() {
+    var questionNum = confirm("Would you like to enter a number?");
+
+    if(questionNum) {
+       var enteredNum = +prompt("Enter a number!");
+       if(enteredNum % 2 === 0) {
+           alert("Your number is Even");
+           alert("Your number plus 100 is: " + (enteredNum + 100));
+           posNeg(enteredNum)
+       } else {
+           alert("Your number is Odd");
+           alert("Your number plus 100 is: " + (enteredNum + 100));
+           posNeg(enteredNum)
+       }
+    }
+}
+
+function posNeg(num) {
+    if(num > 0) {
+        alert("Your number is positive!");
+    } else {
+        alert("Your number is negative!");
+    }
+}
+
+askUser();
+
 /* ########################################################################## */
 
 /**
