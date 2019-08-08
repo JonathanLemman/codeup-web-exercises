@@ -87,6 +87,34 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
+var userInput = prompt("Enter a color!");
+
+function analyzeColor(color) {
+    switch(color) {
+        case 'red':
+            return "Strawberries are red";
+        case 'orange':
+            return "Oranges are orange";
+        case 'yellow':
+            return "This cup in front of me is yellow";
+        case 'green':
+            return "Grass is green";
+        case 'blue':
+            return "blue is the color of the sky";
+        case 'indigo':
+            return "indigo is such a beautiful color between blue and purple";
+        case 'violet':
+            return "violet is like a lighter indigo";
+        default:
+            return "I don't know anything about " + color;
+    }
+}
+
+// test cases
+// alert(analyzeColor(userInput));
+// console.log(analyzeColor(randomColor));
+// console.log(analyzeColor("red"));
+// console.log(analyzeColor("cyan"));
 
 /* ########################################################################## */
 
@@ -117,5 +145,29 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * and alerts to display to the user what their lucky number was, what their
  * price before the discount was, and what their price after the discount is.
  */
-// Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+var userTotalBill = +prompt("Enter your total bill");
+
+function calculateTotal(luckyNum, totalAmount) {
+    if(luckyNum === 0){
+        return "Your total amount with discount is: " + totalAmount;
+    } else if(luckyNum === 1) {
+        return "Your total amount with discount is: " + (totalAmount - (totalAmount * .10));
+    } else if(luckyNum === 2) {
+        return "Your total amount with discount is: " + (totalAmount - (totalAmount * .25));
+    } else if(luckyNum === 3) {
+        return "Your total amount with discount is: " + (totalAmount - (totalAmount * .35));
+    } else if(luckyNum === 4) {
+        return "Your total amount with discount is: " + (totalAmount * .50);
+    } else {
+        return "Your total amount with discount is: " + 0;
+    }
+}
+
+var luckyNumber = Math.floor(Math.random() * 6);
+alert('Your lucky number is: ' + luckyNumber + ' Your total bill is: ' + userTotalBill + " " + (calculateTotal(luckyNumber, userTotalBill)));
+
+// Test cases
+// console.log(calculateTotal(2, 50), 37.5);
+// console.log(calculateTotal(3, 50), 32.5);
+// console.log(calculateTotal(4, 50), 0);
+
