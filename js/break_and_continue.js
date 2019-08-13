@@ -5,7 +5,7 @@
 
 while(true) {
     var oddUser = prompt("Enter an odd number");
-    if(oddUser % 2 === 1) {
+    if(oddUser % 2 === 1 && oddUser > 0 && oddUser < 51) {
         break;
     }
 }
