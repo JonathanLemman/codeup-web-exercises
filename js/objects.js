@@ -82,12 +82,20 @@
      */
 
     var books = [
-        {title: 'Where the Crawdads Sing', author: {firstName: 'Delia', lastName: 'Owens'}},
-        {title: 'Becoming', author: {firstName: 'Michelle', lastName: 'Obama'}},
-        {title: 'Educated', author: {firstName: 'Tara', lastName: 'Westover'}},
-        {title: 'Girl, Wash Your face', author: {firstName: 'Rachel', lastName: 'Hollis'}},
-        {title: 'Unfreedom of the Press', author: {firstName: 'Mark', lastName: 'Levin'}}
+        // {title: 'Where the Crawdads Sing', author: {firstName: 'Delia', lastName: 'Owens'}},
+        // {title: 'Becoming', author: {firstName: 'Michelle', lastName: 'Obama'}},
+        // {title: 'Educated', author: {firstName: 'Tara', lastName: 'Westover'}},
+        // {title: 'Girl, Wash Your face', author: {firstName: 'Rachel', lastName: 'Hollis'}},
+        // {title: 'Unfreedom of the Press', author: {firstName: 'Mark', lastName: 'Levin'}}
     ];
+
+    // Books adding to empty array with function
+    books.unshift(createBook('Where the Crawdads Sing', 'Delia', 'Owens'));
+    books.unshift(createBook('Becoming', 'Michelle', 'Obama'));
+    books.unshift(createBook('Educated', 'Tara', 'Westover'));
+    books.unshift(createBook('Girl, Wash Your Face', 'Rachel', 'Hollins'));
+    books.unshift(createBook('Unfreedom of the Press', 'Mark', 'Levin'));
+    books.reverse();
 
     /**
      * TODO:
@@ -115,9 +123,7 @@
      */
 
     books.forEach(function (book, index) {
-        console.log("Book #" + (index + 1));
-        console.log("Title: " + book.title);
-        console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+        console.log(showBookInfo(book, index));
     });
 
 
@@ -132,5 +138,13 @@
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+
+    function createBook(title, firstName, lastName) {
+        return {title: title, author: {firstName: firstName, lastName: lastName}};
+    }
+
+    function showBookInfo(book, index) {
+        return "Book #" + (index + 1) + "\n" + "Title: " + book.title + "\n" + "Author: " + book.author.firstName + " " + book.author.lastName;
+    }
 
 })();
