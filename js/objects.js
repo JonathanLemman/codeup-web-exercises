@@ -81,6 +81,14 @@
      * > console.log(books[0].author.lastName) // "Adams"
      */
 
+    var books = [
+        {title: 'Where the Crawdads Sing', author: {firstName: 'Delia', lastName: 'Owens'}},
+        {title: 'Becoming', author: {firstName: 'Michelle', lastName: 'Obama'}},
+        {title: 'Educated', author: {firstName: 'Tara', lastName: 'Westover'}},
+        {title: 'Girl, Wash Your face', author: {firstName: 'Rachel', lastName: 'Hollis'}},
+        {title: 'Unfreedom of the Press', author: {firstName: 'Mark', lastName: 'Levin'}}
+    ];
+
     /**
      * TODO:
      * Loop through the books array and output the following information about
@@ -105,6 +113,14 @@
      *      ---
      *      ...
      */
+
+    books.forEach(function (book, index) {
+        console.log("Book #" + (index + 1));
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+    });
+
+
 
     /**
      * Bonus:
