@@ -45,16 +45,19 @@
 
 
         // TODO: Set text color on every other list item to grey
-
+        // TODO: Set text color of li with dbid = 1 to blue
         for (var i = 0; i < listItems.length; i++) {
+            var dbId = listItems[i].getAttribute("data-dbid");
             if(i % 2 === 1) {
                 listItems[i].style.color = 'grey';
+            } else if(dbId === "1") {
+                listItems[i].style.color = 'blue';
             }
         }
 
-        // TODO: Set text color of li with dbid = 1 to blue
-        var dbId1 = document.querySelector('li[data-dbid="1"]');
-        dbId1.style.color = 'blue';
+        // Another way of doing my else if in the loop
+        // var dbId1 = document.querySelector('li[data-dbid="1"]');
+        // dbId1.style.color = 'blue';
 
 
 
