@@ -29,6 +29,7 @@
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
 <button id="p-btn">Click Me!</button>
+<h1>Here is how many times you pressed enter: <span id="counter">0</span>!</h1>
 
 <script>
     (function() {
@@ -74,11 +75,9 @@
             }
         });
 
-
         // Another way of doing my else if in the loop
         // var dbId1 = document.querySelector('li[data-dbid="1"]');
         // dbId1.style.color = 'blue';
-
 
 
         // TODO: Uncomment the next line and get all elements with class name sub-paragraph
@@ -90,6 +89,28 @@
         parButton.addEventListener('click', function () {
             subParagraphs[0].innerHTML = "Mission Accomplished!"
         });
+
+        // BONUS BONUS BONUS BONUS
+
+
+        var bod = document.querySelector("body");
+        document.addEventListener('keyup', function (e) {
+           if(e.key === "g") {
+               e.preventDefault();
+               bod.style.backgroundColor = 'purple';
+           }
+        });
+
+        var counterHTML = document.querySelector("#counter");
+        var counter = 0;
+        document.addEventListener('keyup', function (e) {
+            if(e.keyCode === 13) {
+                counterHTML.innerText = counter;
+                counter++;
+            }
+        });
+
+
     })();
 </script>
 </body>
