@@ -22,9 +22,17 @@
         center: [-98.4916, 29.4252]
     });
 
+    var popup = new mapboxgl.Popup()
+        .setHTML("<p>Codeup Rocks!</p>")
+            .addTo(map);
+
     var marker = new mapboxgl.Marker()
         .setLngLat([-98.4916, 29.4260])
         .addTo(map);
+
+    marker.setPopup(popup);
+
+
 
 
 </script>
