@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox Maps API</title>
+    <!-- Mapbox CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- Custom CSS -->
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Mapbox Maps API</h1>
+
+<!-- The HTML element that serves as the Mapbox container -->
+<div id='map'></div>
+
+<!-- Mapbox JS -->
+<script src="js/keys.js"></script>
+<script src="js/mapbox-utils.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
+<!-- Custom JS -->
+<script>
+    mapboxgl.accessToken = mapboxToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 5,
+        center: [-98.4936, 29.4241]
+    });
+    // Favorite Restaurants Array
+    var favoriteRestaurant = [
+        {name: "Chama Gaucha Brazilian Steakhouse San Antonio"},
+        {name: "Chris Madrids San Antonio"},
+        {name: "Pinch Boil House"}
+    ];
+    // Loop through the Array Above
+    var restaurant = favoriteRestaurant.forEach(function (restaurant) {
+        geoPin(restaurant);
+    });
+    //Function that passes the results of the loop as an argument
+    function geoPin(rest) {
+        geocode(rest.name, mapboxToken).then(function (result) {
+            // Popup Set
+            var popup = new mapboxgl.Popup()
+                .setHTML('<p>' + rest.name + '</p>');
+            // Marker Set
+            var marker = new mapboxgl.Marker()
+                .setLngLat(result)
+                .setPopup(popup)
+                .addTo(map);
+            // Map Jump too
+            map.jumpTo({center: result, zoom: 10});
+        });
+    }
+
+
+
+
+</script>
+</body>
+</html>
