@@ -36,14 +36,15 @@
     });
 
     var popup = new mapboxgl.Popup()
-        .setHTML("<p>Lincoln Memorial</p>")
-            .addTo(map);
+        .setHTML("<p>Lincoln Memorial</p>");
+
 
     var marker = new mapboxgl.Marker()
         .setLngLat([-77.0499772, 38.8892786])
+        .setPopup(popup)
         .addTo(map);
 
-    marker.setPopup(popup);
+
 
 
 
