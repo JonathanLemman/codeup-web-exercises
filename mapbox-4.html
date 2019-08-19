@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox exercise 4</title>
+    <!-- Mapbox CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- Custom CSS -->
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Exercise 4</h1>
+
+<!-- The HTML element that serves as the Mapbox container -->
+<div id='map'></div>
+
+<!-- Mapbox JS -->
+<script src="js/keys.js"></script>
+<script src="js/mapbox-utils.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
+<!-- Custom JS -->
+<script>
+    mapboxgl.accessToken = mapboxToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-98.4936, 29.4241]
+    });
+
+    geocode("Whitefish, Montana", mapboxToken).then(function (result) {
+        map.jumpTo({center: result});
+    });
+
+
+    reverseGeocode({lng: -157.8060, lat: 21.2620}, mapboxToken).then(function (result) {
+        console.log(result);
+    });
+
+
+
+
+
+
+</script>
+</body>
+</html>
