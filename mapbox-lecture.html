@@ -22,8 +22,9 @@
         center: [-98.4916, 29.4252]
     });
 
-
-    map.jumpTo({center: [-90.4916, 29.4252]});
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-98.4916, 29.4260])
+        .addTo(map);
 
 
 </script>
