@@ -5,14 +5,25 @@
     <title>JQuery</title>
 </head>
 <body>
-<script>
-    "use strict";
 
-    $(document).ready(function() {
-        alert( 'The DOM has finished loading!' );
-    });
 
-</script>
+
+
+
+
+
+<h1 id="header" class="head-style">The header</h1>
+<p id="paragraph" class="p-style">The paragraph to the header</p>
+<ul id="list" class="list-style">
+    <li class="list-items">First list item</li>
+    <li class="list-items">Second list item</li>
+    <li class="list-items">Third list item</li>
+    <li class="list-items">Fourth list item</li>
+</ul>
+
+<div id="something" class="something-style"></div>
+
+
 
 
 
@@ -22,5 +33,20 @@
 
 
 <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+<script>
+    "use strict";
+    $(document).ready(function() {
+
+        var content = $('#paragraph').html();
+        alert(content);
+
+
+
+
+
+
+    });
+
+</script>
 </body>
 </html>
