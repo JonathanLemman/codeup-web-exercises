@@ -10,7 +10,7 @@
             width: 400px;
             height: 400px;
             position: relative;
-            bottom: 75px;
+            bottom: 135px;
             margin: 200px auto 0;
             background: center url("img/mario.gif");
         }
@@ -18,12 +18,17 @@
         h1 {
             text-align: center;
         }
+
+        #konami {
+            width: 200px;
+        }
+
     </style>
 </head>
 <body>
 <div class="container">
+    <img id="konami" src="img/konami.png" alt="konami">
     <div class="box"></div>
-    <h1>Konami</h1>
 </div>
 
 
@@ -46,7 +51,6 @@
 
         }
     });
-
 
 
     $(document).keydown(function(e){
