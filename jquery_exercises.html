@@ -37,10 +37,22 @@
     "use strict";
     $(document).ready(function() {
 
-    $('li').css('font-size', '20px');
-    $('h1, p, li').css('background', 'red');
-    var content = $('h1').html();
-    alert(content);
+        $('h1').click(function() {
+            $(this).css('background', 'yellow');
+        });
+
+        $('p').dblclick(function(e) {
+            $(this).css('font-size', '18px');
+        });
+
+        $('li').hover(
+            function() {
+                $(this).css('color', 'red');
+            },
+            function() {
+                $(this).css('color', 'black');
+            }
+        );
 
 
 
