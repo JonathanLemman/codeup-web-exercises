@@ -51,6 +51,13 @@
 
         }
     });
+    
+    $(document).keydown(function (e) {
+        if(e.keyCode === 32) {
+            $("body").css("background-image", "url('img/blue.webp')");
+            $(".container").css("display", "none");
+        }
+    });
 
 
     $(document).keydown(function(e){
