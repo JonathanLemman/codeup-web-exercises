@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Konami Code</title>
+    <style>
+        body {
+            background: url("img/mback.jpg");
+        }
+        .box{
+            width: 400px;
+            height: 400px;
+            position: relative;
+            bottom: 75px;
+            margin: 200px auto 0;
+            background: center url("img/mario.gif");
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box"></div>
+    <h1>Konami</h1>
+</div>
+
+
+
+
+
+
+<script src="js/jquery-2.2.4.js"></script>
+<script>
+    "use strict";
+
+    var konami = '38,38,40,40,37,39,37,39,66,65,13';
+    var keys = [];
+
+    $(document).keyup(function(e){
+        keys.push(e.keyCode);
+        if ( keys.toString().indexOf( konami ) >= 0 ) {
+            $(".box").css("background-image", "url('img/power.gif')").css("height", "519").css("margin-top", "62px");
+            $("h1").html("Power Up!");
+
+        }
+    });
+
+
+
+    $(document).keydown(function(e){
+        switch (e.which){
+            case 37:    //left arrow key
+                $(".box").finish().animate({
+                    left: "-=50"
+                });
+                break;
+            case 38:    //up arrow key
+                $(".box").finish().animate({
+                    top: "-=50"
+                });
+                break;
+            case 39:    //right arrow key
+                $(".box").finish().animate({
+                    left: "+=50"
+                });
+                break;
+            case 40:    //bottom arrow key
+                $(".box").finish().animate({
+                    top: "+=50"
+                });
+                break;
+        }
+    });
+
+
+
+
+</script>
+</body>
+</html>
