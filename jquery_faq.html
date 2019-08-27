@@ -12,9 +12,24 @@
         .highlight {
             background: yellow;
         }
+
+        ul {
+            display: none;
+        }
+
+        #ask {
+            display: none;
+        }
     </style>
 </head>
 <body>
+
+<h2 id="ask">Would you like to register?</h2>
+
+<div>
+    <h1>Would you like to sign up for our newsletter?</h1>
+    <span>X</span>
+</div>
 
 <h2>10 FAQ about Yellowstone National Park</h2>
 
@@ -73,9 +88,6 @@
 </ul>
 
 <button class="btn">Click Me</button>
-<!--Create a button that, when clicked, makes the last li in each ul have a yellow background.-->
-<!--When any h3 is clicked, the lis underneath it should be bolded. Use font-weight: bold to achieve this.-->
-<!--When any list item is clicked, first li of the parent ul should have a font color of blue.-->
 
 <script src="js/jquery-2.2.4.js"></script>
 
@@ -94,12 +106,22 @@
         });
         
         $('h3').click(function () {
-            $('ul').children().css('font-weight', 'bold');
+            $(this).next().slideToggle().css('font-weight', 'bold');
         });
 
         $('li').click(function () {
             $('li:first-child').css('color', 'blue');
-        })
+        });
+
+        $('span').click(function () {
+            $('div').hide();
+        });
+
+        setTimeout(function(){
+            $('html').fadeIn().html('<h2>Would you like to register?</h2>');
+        }, 8000);
+
+
 
 
 
