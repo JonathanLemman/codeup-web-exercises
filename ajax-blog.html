@@ -20,10 +20,10 @@
         "use strict";
         // TODO: Create an ajax GET request for /data/inventory.json
 
-            var card = "";
+
 
             $.get('data/blog.json').done(function (data) {
-                console.log(data);
+                var card = "";
                 data.forEach(function (blog) {
                     card += "<div class='card text-white bg-info mb-3 mx-auto p-3' style=\"max-width: 23rem;\">";
                     card += "<h3 class=\"card-header text-center\">" + blog.title + "</h3>";
