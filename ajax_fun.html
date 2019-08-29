@@ -9,32 +9,67 @@
 <script src="js/jquery-2.2.4.js"></script>
 <script>
 
-    $.ajax('https://swapi.co/api/starships/9/').done(function (data) {
-        console.log(data.name);
-        console.log(data.model);
-        console.log(data.manufacturer);
-        console.log(data.crew);
-    });
+    // $.ajax('https://swapi.co/api/starships/9/').done(function (data) {
+    //     console.log(data.name);
+    //     console.log(data.model);
+    //     console.log(data.manufacturer);
+    //     console.log(data.crew);
+    // });
 
-    $.ajax('https://swapi.co/api/films/').done(function (data) {
-        console.log(data.results[0].title);
-        console.log(data.results[1].title);
-        console.log(data.results[2].title);
-        console.log(data.results[3].title);
-    });
+    // $.ajax('https://swapi.co/api/films/').done(function (data) {
+    //     console.log(data.results[0].title);
+    //     console.log(data.results[1].title);
+    //     console.log(data.results[2].title);
+    //     console.log(data.results[3].title);
+    // });
 
+    // $.ajax('https://hookb.in/zrnQEp1JKpi1Z1GRaOep', {
+    //     data: {
+    //         name: 'Lemon',
+    //         age: 32
+    //     }
+    // });
+
+    // $.ajax('https://hookb.in/zrnQEp1JKpi1Z1GRaOep', {
+    //     data: {
+    //         dogsName: 'Lola',
+    //         age: 5
+    //     }
+    // });
+
+    // AJAX GET
     $.ajax('https://hookb.in/zrnQEp1JKpi1Z1GRaOep', {
         data: {
-            name: 'Lemon',
-            age: 32
+            make: 'Ford',
+            model: 'Edge'
         }
+    }).done(function (data) {
+        console.log(data);
+    });
+    // AJAX POST
+    $.ajax('https://hookb.in/zrnQEp1JKpi1Z1GRaOep', {
+        method: 'POST',
+        data: {
+            make: 'Ford',
+            model: 'Edge'
+        }
+    }).done(function (data) {
+        console.log(data);
     });
 
-    $.ajax('https://hookb.in/zrnQEp1JKpi1Z1GRaOep', {
-        data: {
-            dogsName: 'Lola',
-            age: 5
-        }
+    // AJAX SHORTHAND GET no need for type or data
+    $.get('https://hookb.in/zrnQEp1JKpi1Z1GRaOep', {
+            make: 'short-Ford',
+            model: 'short-Edge'
+    }).done(function (data) {
+        console.log(data);
+    });
+    // AJAX SHORTHAND POST no need for Method or data
+    $.post('https://hookb.in/zrnQEp1JKpi1Z1GRaOep', {
+            make: 'short-Ford',
+            model: 'short-Edge'
+    }).done(function (data) {
+        console.log(data);
     });
 
 
