@@ -25,11 +25,13 @@
             $.get('data/blog.json').done(function (data) {
                 var card = "";
                 data.forEach(function (blog) {
-                    card += "<div class='card text-white bg-info mb-3 mx-auto p-3' style=\"max-width: 23rem;\">";
+                    card += "<div class='d-flex justify-content-center'>";
+                    card += "<div class='card text-white bg-info mb-3 ml-3 p-3' style=\"max-width: 23rem;\">";
                     card += "<h3 class=\"card-header text-center\">" + blog.title + "</h3>";
                     card += "<h6 class=\"card-title text-center pt-3\">" + blog.date + "</h6>";
                     card += "<p class=\"card-text\">" + blog.content + "</p>";
                     card += "</div>";
+                    card += "<div>";
                 });
 
 
