@@ -33,9 +33,10 @@
 (function() {
     "use strict";
     // TODO: Create an ajax GET request for /data/inventory.json
-    var invent = '';
+
     function updatePage() {
         $.get('data/inventory.json').done(function (data) {
+            var invent = '';
             data.forEach(function (item) {
                 invent += '<tr>';
                 invent += '<th class="border border-dark bg-info text-white">' + item.title + '</th>';
