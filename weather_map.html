@@ -3,50 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather Map</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
-<h2>San Antonio</h2>
-<div id="current"></div>
+
+
+
+
+<div class="container">
+
+    <h2 class="text-center">San Antonio</h2>
+    <div id="current" class="p-0 mx-auto card-deck text-center"></div>
+
+    <form class="my-3">
+        <div class="form-row">
+            <div class="col">
+                <input id="latitude" type="text" class="form-control" placeholder="Latitude">
+            </div>
+            <div class="col">
+                <input id="longitude" type="text" class="form-control" placeholder="Longitude">
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary btn-lg btn-block my-2">Update</button>
+    </form>
+
+    <div id='map' style="height: 500px"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script src="js/jquery-2.2.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="js/keys.js"></script>
 <script>
     (function() {
     "use strict";
         $(document).ready(function () {
 
-            var currentHTML = "";
+                var lat = 29.424;
+                var long = -98.4936;
 
-            $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken +"/29.4241,-98.4936").done(function (data) {
-                console.log(data);
-                for(var i = 0; i < 3; i++) {
+                $('button').click(function () {
+                    lat = $('#latitude').val();
+                    long = $('#longitude').val();
+                    updateWeather();
+                });
 
-                    currentHTML += "<h4>" + readyDate(data.daily.data[i].time) + "</h4>";
-                    currentHTML += "<div>Temperature: " + data.daily.data[i].temperatureHigh + "/" + data.daily.data[i].temperatureLow + "</div>";
-                    currentHTML += "<div>Icon: " + data.daily.data[i].icon + "</div>";
-                    currentHTML += "<div>Humidity: " + data.daily.data[i].humidity + "</div>";
-                    currentHTML += "<div>Wind: " + data.daily.data[i].windGust + "</div>";
-                    currentHTML += "<div>Summary: " + data.daily.data[i].summary + "</div>";
-                }
-                $('#current').html(currentHTML);
-            });
+                updateWeather();
+
+            function updateWeather() {
+                var currentHTML = "";
+                $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/" + lat + "," + long).done(function (data) {
+                    console.log(data);
+                    for (var i = 0; i < 3; i++) {
+                        currentHTML += "<div class='card shadow-sm'>";
+                        currentHTML += "<h4>" + readyDate(data.daily.data[i].time) + "</h4>";
+                        currentHTML += "<h6>" + parseInt(data.daily.data[i].temperatureHigh) + "/" + parseInt(data.daily.data[i].temperatureLow) + "</h6>";
+                        currentHTML += "<img src=" + checkIcon(data.daily.data[i].icon) + " alt='icon'>";
+                        currentHTML += "<div>Humidity: " + data.daily.data[i].humidity + "</div>";
+                        currentHTML += "<div>Wind: " + data.daily.data[i].windGust + "</div>";
+                        currentHTML += "<div>Summary: " + data.daily.data[i].summary + "</div>";
+                        currentHTML += "</div>";
+                    }
+                    $('#current').html(currentHTML);
+                });
+            }
+
+
+
+
 
 
             var arrIcons = [
                 {
                     icon: "clear-day",
-                    url: ""
+                    url: "icon/climacons-master/SVG/Sun.svg"
                 },
-                {icon: "clear-night"},
-                {icon: "rain"},
-                {icon: "snow"},
-                {icon: "sleet"},
-                {icon: "wind"},
-                {icon: "fog"},
-                {icon: "cloudy"},
-                {icon: "partly-cloudy-day"},
-                {icon: "partly-cloudy-night"}
+                {
+                    icon: "clear-night",
+                    url: "icon/climacons-master/SVG/Moon-full.svg"
+                },
+                {
+                    icon: "rain",
+                    url: "icon/climacons-master/SVG/Cloud-Rain.svg"
+                },
+                {
+                    icon: "snow",
+                    url: "icon/climacons-master/SVG/Snowflake.svg"
+                },
+                {
+                    icon: "sleet",
+                    url: "icon/climacons-master/SVG/Cloud-Hail.svg"
+                },
+                {
+                    icon: "wind",
+                    url: "icon/climacons-master/SVG/Wind.svg"
+                },
+                {
+                    icon: "fog",
+                    url: "icon/climacons-master/SVG/Cloud-Fog.svg"
+                },
+                {
+                    icon: "cloudy",
+                    url: "icon/climacons-master/SVG/Cloud.svg"
+                },
+                {
+                    icon: "partly-cloudy-day",
+                    url: "icon/climacons-master/SVG/Cloud-Sun.svg"
+                },
+                {
+                    icon: "partly-cloudy-night",
+                    url: "icon/climacons-master/SVG/Cloud-Moon.svg"
+                }
             ];
+
+            mapboxgl.accessToken = mapboxToken;
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v9',
+                zoom: 10,
+                center: [-98.4936, 29.4241]
+            });
 
 
             // Sub functions
@@ -56,6 +152,16 @@
                 var day = dateObject.getUTCDate();
                 var year = dateObject.getUTCFullYear();
                 return month + "/" + day + "/" + year;
+            }
+
+            function checkIcon(icon) {
+                var arr = [];
+                arrIcons.forEach(function (value) {
+                    if(icon === value.icon ) {
+                        arr.push(value.url);
+                    }
+                });
+                return arr;
             }
 
 
