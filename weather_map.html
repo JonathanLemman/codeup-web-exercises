@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map</title>
+</head>
+<body>
+<h2>San Antonio</h2>
+<div id="current"></div>
+
+<script src="js/jquery-2.2.4.js"></script>
+<script src="js/keys.js"></script>
+<script>
+    (function() {
+    "use strict";
+        $(document).ready(function () {
+
+            var currentHTML = "";
+
+            $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken +"/29.4241,-98.4936").done(function (data) {
+                console.log(data);
+                for(var i = 0; i < 3; i++) {
+
+                    currentHTML += "<h4>" + readyDate(data.daily.data[i].time) + "</h4>";
+                    currentHTML += "<div>Temperature: " + data.daily.data[i].temperatureHigh + "/" + data.daily.data[i].temperatureLow + "</div>";
+                    currentHTML += "<div>Icon: " + data.daily.data[i].icon + "</div>";
+                    currentHTML += "<div>Humidity: " + data.daily.data[i].humidity + "</div>";
+                    currentHTML += "<div>Wind: " + data.daily.data[i].windGust + "</div>";
+                    currentHTML += "<div>Summary: " + data.daily.data[i].summary + "</div>";
+                }
+                $('#current').html(currentHTML);
+            });
+
+
+            var arrIcons = [
+                {
+                    icon: "clear-day",
+                    url: ""
+                },
+                {icon: "clear-night"},
+                {icon: "rain"},
+                {icon: "snow"},
+                {icon: "sleet"},
+                {icon: "wind"},
+                {icon: "fog"},
+                {icon: "cloudy"},
+                {icon: "partly-cloudy-day"},
+                {icon: "partly-cloudy-night"}
+            ];
+
+
+            // Sub functions
+            function readyDate(data) {
+                var dateObject = new Date(data * 1000);
+                var month = dateObject.getUTCMonth() + 1;
+                var day = dateObject.getUTCDate();
+                var year = dateObject.getUTCFullYear();
+                return month + "/" + day + "/" + year;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+        });
+    })();
+
+</script>
+</body>
+</html>
