@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather Map</title>
+    <link href="https://fonts.googleapis.com/css?family=Manjari:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body {
+            background: #959CA3;
+            color: #282930;
+            font-family: 'Manjari', sans-serif;
+        }
+
+        #card {
+            background: #EBEDEA;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -13,9 +26,9 @@
 
 <div class="container">
 
-    <h2 class="text-center">San Antonio</h2>
+    <h2 class="text-center display-3 font-weight-bold">San Antonio</h2>
     <div id="current" class="p-0 mx-auto mb-3 card-deck text-center"></div>
-    <div id='map' style="height: 500px"></div>
+    <div id='map' class="shadow" style="height: 500px"></div>
 </div>
 
 
@@ -62,15 +75,14 @@
             function updateWeather() {
                 var currentHTML = "";
                 $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/" + lat + "," + long).done(function (data) {
-                    console.log(data);
                     for (var i = 0; i < 3; i++) {
-                        currentHTML += "<div class='card shadow-sm'>";
-                        currentHTML += "<h4>" + readyDate(data.daily.data[i].time) + "</h4>";
-                        currentHTML += "<h6>" + parseInt(data.daily.data[i].temperatureHigh) + "/" + parseInt(data.daily.data[i].temperatureLow) + "</h6>";
+                        currentHTML += "<div id='card' class='card shadow m-1 p-4'>";
+                        currentHTML += "<h4 class='h2 font-weight-bold'>" + readyDate(data.daily.data[i].time) + "</h4>";
+                        currentHTML += "<h6 class='h2'>" + parseInt(data.daily.data[i].temperatureHigh) + " / " + parseInt(data.daily.data[i].temperatureLow) + "</h6>";
                         currentHTML += "<img src='" + checkIcon(data.daily.data[i].icon) + "' alt='icon'>";
-                        currentHTML += "<div>Humidity: " + data.daily.data[i].humidity + "</div>";
-                        currentHTML += "<div>Wind: " + data.daily.data[i].windGust + "</div>";
-                        currentHTML += "<div>Summary: " + data.daily.data[i].summary + "</div>";
+                        currentHTML += "<div><strong>Humidity:</strong> " + data.daily.data[i].humidity + "</div>";
+                        currentHTML += "<div><strong>Wind:</strong> " + data.daily.data[i].windGust + "</div>";
+                        currentHTML += "<div><strong>Summary:</strong> " + data.daily.data[i].summary + "</div>";
                         currentHTML += "</div>";
                     }
                     $('#current').html(currentHTML);
@@ -133,18 +145,18 @@
                 center: [-98.4936, 29.4241]
             });
 
-            map.on('mouseup', function () {
-                lat = marker.getLngLat().lat;
-                long = marker.getLngLat().lng;
-                updateWeather();
-            });
-
 
             var marker = new mapboxgl.Marker({
                 draggable: true
             })
                 .setLngLat([-98.4936, 29.4241])
                 .addTo(map);
+
+            marker.on('dragend', function () {
+                lat = marker.getLngLat().lat;
+                long = marker.getLngLat().lng;
+                updateWeather();
+            });
 
 
             var geocoder = new MapboxGeocoder({
@@ -159,7 +171,6 @@
                 lat = result.result.center[1];
                 long = result.result.center[0];
                 marker.setLngLat([long, lat]);
-                console.log(result);
                 $('h2').html(result.result.place_name);
                 updateWeather();
             });
