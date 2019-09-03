@@ -14,10 +14,7 @@
 <div class="container">
 
     <h2 class="text-center">San Antonio</h2>
-    <div id="current" class="p-0 mx-auto card-deck text-center"></div>
-
-    <button type="button" class="btn btn-secondary btn-lg btn-block my-2">Update</button>
-
+    <div id="current" class="p-0 mx-auto mb-3 card-deck text-center"></div>
     <div id='map' style="height: 500px"></div>
 </div>
 
@@ -54,11 +51,11 @@
                 var lat = 29.424;
                 var long = -98.4936;
 
-                $('button').click(function () {
-                    lat = marker.getLngLat().lat;
-                    long = marker.getLngLat().lng;
-                    updateWeather();
-                });
+                // $('button').click(function () {
+                //     lat = marker.getLngLat().lat;
+                //     long = marker.getLngLat().lng;
+                //     updateWeather();
+                // });
 
                 updateWeather();
 
@@ -136,6 +133,13 @@
                 center: [-98.4936, 29.4241]
             });
 
+            map.on('mouseup', function () {
+                lat = marker.getLngLat().lat;
+                long = marker.getLngLat().lng;
+                updateWeather();
+            });
+
+
             var marker = new mapboxgl.Marker({
                 draggable: true
             })
@@ -150,11 +154,15 @@
             map.addControl(geocoder);
 
 
-            map.on("moveend", function() {
-                marker.setLngLat(map.getCenter());
-                $('h2').html(geocoder._typeahead.selected.text);
-            });
 
+            geocoder.on('result', function(result) {
+                lat = result.result.center[1];
+                long = result.result.center[0];
+                marker.setLngLat([long, lat]);
+                console.log(result);
+                $('h2').html(result.result.place_name);
+                updateWeather();
+            });
 
             // Sub functions
             function readyDate(data) {
@@ -174,8 +182,6 @@
                 });
                 return arr;
             }
-
-
 
 
 
