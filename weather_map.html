@@ -65,7 +65,7 @@
             function updateWeather() {
                 var currentHTML = "";
                 $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/" + lat + "," + long).done(function (data) {
-                    // console.log(data);
+                    console.log(data);
                     for (var i = 0; i < 3; i++) {
                         currentHTML += "<div class='card shadow-sm'>";
                         currentHTML += "<h4>" + readyDate(data.daily.data[i].time) + "</h4>";
@@ -144,11 +144,16 @@
 
 
             var geocoder = new MapboxGeocoder({
-                accessToken: mapboxToken,
-                mapboxgl: mapboxgl
+                accessToken: mapboxToken
+                // mapboxgl: mapboxgl
             });
             map.addControl(geocoder);
-            console.log(geocoder);
+
+
+            map.on("moveend", function() {
+                marker.setLngLat(map.getCenter());
+                $('h2').html(geocoder._typeahead.selected.text);
+            });
 
 
             // Sub functions
