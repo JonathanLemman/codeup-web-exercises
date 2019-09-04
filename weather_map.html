@@ -8,13 +8,13 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         body {
-            background: #959CA3;
+            background: #F5F4F6;
             color: #282930;
             font-family: 'Manjari', sans-serif;
         }
 
         #card {
-            background: #EBEDEA;
+            background: #F5F4F6;
         }
     </style>
 
@@ -25,7 +25,6 @@
 
 
 <div class="container">
-
     <h2 class="text-center display-3 font-weight-bold">San Antonio</h2>
     <div id="current" class="p-0 mx-auto mb-3 card-deck text-center"></div>
     <div id='map' class="shadow" style="height: 500px"></div>
@@ -76,7 +75,7 @@
                 var currentHTML = "";
                 $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/" + lat + "," + long).done(function (data) {
                     for (var i = 0; i < 3; i++) {
-                        currentHTML += "<div id='card' class='card shadow m-1 p-4'>";
+                        currentHTML += "<div id='card' class='card shadow-lg m-1 p-4'>";
                         currentHTML += "<h4 class='h2 font-weight-bold'>" + readyDate(data.daily.data[i].time) + "</h4>";
                         currentHTML += "<h6 class='h2'>" + parseInt(data.daily.data[i].temperatureHigh) + " / " + parseInt(data.daily.data[i].temperatureLow) + "</h6>";
                         currentHTML += "<img src='" + checkIcon(data.daily.data[i].icon) + "' alt='icon'>";
@@ -140,8 +139,8 @@
             mapboxgl.accessToken = mapboxToken;
             var map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v9',
-                zoom: 10,
+                style: 'mapbox://styles/mapbox/dark-v9',
+                zoom: 8,
                 center: [-98.4936, 29.4241]
             });
 
