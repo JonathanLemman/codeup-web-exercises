@@ -135,7 +135,7 @@
                 const lat = result.result.center[1];
                 const long = result.result.center[0];
                 marker.setLngLat([long, lat]);
-                $('h2').html(result.result.place_name);
+                $('h2').html(result.result.text);
                 updateWeather(lat, long);
             });
 
