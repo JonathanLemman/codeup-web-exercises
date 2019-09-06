@@ -47,30 +47,18 @@
     "use strict";
         $(document).ready(function () {
 
-                var lat = 29.424;
-                var long = -98.4936;
+            updateWeather(29.424, -98.4936);
 
-                updateWeather();
-
-            function updateWeather() {
-                var currentHTML = "";
+            function updateWeather(lat, long) {
                 $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/" + lat + "," + long).done(function (data) {
-                    for (var i = 0; i < 3; i++) {
-                        currentHTML += "<div id='card' class='card shadow-lg m-1 p-4'>";
-                        currentHTML += "<h4 class='h2 font-weight-bold'>" + readyDate(data.daily.data[i].time) + "</h4>";
-                        currentHTML += "<h6 class='h2'>" + parseInt(data.daily.data[i].temperatureHigh) + " / " + parseInt(data.daily.data[i].temperatureLow) + "</h6>";
-                        currentHTML += "<img src='" + checkIcon(data.daily.data[i].icon) + "' alt='icon'>";
-                        currentHTML += "<div><strong>Humidity:</strong> " + data.daily.data[i].humidity + "</div>";
-                        currentHTML += "<div><strong>Wind:</strong> " + data.daily.data[i].windGust + "</div>";
-                        currentHTML += "<div><strong>Summary:</strong> " + data.daily.data[i].summary + "</div>";
-                        currentHTML += "</div>";
-                    }
-                    $('#current').html(currentHTML);
+                    $('#current').html(htmlBuilder(data));
                 });
             }
 
 
-            var arrIcons = [
+
+
+            const arrIcons = [
                 {
                     icon: "clear-day",
                     url: "icon/climacons-master/SVG/Sun.svg"
@@ -115,7 +103,7 @@
 
             // Mapbox
             mapboxgl.accessToken = mapboxToken;
-            var map = new mapboxgl.Map({
+            const map = new mapboxgl.Map({
                 container: 'map',
                 style: 'mapbox://styles/mapbox/dark-v9',
                 zoom: 8,
@@ -123,20 +111,20 @@
             });
 
             // Marker
-            var marker = new mapboxgl.Marker({
+            const marker = new mapboxgl.Marker({
                 draggable: true
             })
                 .setLngLat([-98.4936, 29.4241])
                 .addTo(map);
 
             marker.on('dragend', function () {
-                lat = marker.getLngLat().lat;
-                long = marker.getLngLat().lng;
-                updateWeather();
+                let lat = marker.getLngLat().lat;
+                let long = marker.getLngLat().lng;
+                updateWeather(lat, long);
             });
 
             // Geocode
-            var geocoder = new MapboxGeocoder({
+            const geocoder = new MapboxGeocoder({
                 accessToken: mapboxToken,
                 mapboxgl: mapboxgl,
                 marker: false
@@ -144,30 +132,46 @@
             map.addControl(geocoder);
 
             geocoder.on('result', function(result) {
-                lat = result.result.center[1];
-                long = result.result.center[0];
+                const lat = result.result.center[1];
+                const long = result.result.center[0];
                 marker.setLngLat([long, lat]);
                 $('h2').html(result.result.place_name);
-                updateWeather();
+                updateWeather(lat, long);
             });
 
             // Sub functions
             function readyDate(data) {
-                var dateObject = new Date(data * 1000);
-                var month = dateObject.getUTCMonth() + 1;
-                var day = dateObject.getUTCDate();
-                var year = dateObject.getUTCFullYear();
-                return month + "/" + day + "/" + year;
+                const dateObject = new Date(data * 1000);
+                const month = dateObject.getUTCMonth() + 1;
+                const day = dateObject.getUTCDate();
+                const year = dateObject.getUTCFullYear();
+                return `${month}/${day}/${year}`;
             }
 
             function checkIcon(icon) {
-                var arr = [];
-                arrIcons.forEach(function (value) {
+                const arr = [];
+                for(let value of arrIcons) {
                     if(icon === value.icon ) {
                         arr.push(value.url);
                     }
-                });
+                }
                 return arr;
+            }
+
+            function htmlBuilder(data) {
+                let currentHTML = ``;
+                let weather = data.daily.data;
+                for (let i = 0; i < 3; i++) {
+                    currentHTML += `<div id='card' class='card shadow-lg m-1 p-4'>
+                                         <h4 class='h2 font-weight-bold'>${readyDate(weather[i].time)}</h4>
+                                         <h6 class='h2'>${parseInt(weather[i].temperatureHigh)}/${parseInt(weather[i].temperatureLow)}</h6>
+                                         <img src='${checkIcon(weather[i].icon)}' alt='icon'>
+                                         <div><strong>Humidity:</strong> ${weather[i].humidity}</div>
+                                         <div><strong>Wind:</strong> ${weather[i].windGust}</div>
+                                         <div><strong>Summary:</strong> ${weather[i].summary}</div>
+                                     </div>`;
+                }
+                return currentHTML;
             }
 
         });
