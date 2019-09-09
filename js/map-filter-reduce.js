@@ -54,4 +54,4 @@ users.reduce((accumulation, currentUser) => accumulation.length > currentUser.em
 
 
 // Use .reduce to get the list of user's names in a single string. Example: Your instructors are: ryan, luis, zach, fernando, justin.
-users.reduce((acc, currentUser) => acc + `${currentUser.name}, `, '');
+users.reduce((acc, currentUser) => acc + `${currentUser.name}, `, 'Your instructors are: ');
