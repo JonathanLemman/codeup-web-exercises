@@ -55,3 +55,20 @@ users.reduce((accumulation, currentUser) => accumulation.length > currentUser.em
 
 // Use .reduce to get the list of user's names in a single string. Example: Your instructors are: ryan, luis, zach, fernando, justin.
 users.reduce((acc, currentUser) => acc + `${currentUser.name}, `, 'Your instructors are: ');
+
+//******** Bonus ************* Use .reduce to get the unique list of languages from the list of users.
+let uniqueList = users.reduce((acc, currentUser) => {
+
+}, '');
+
+console.log(uniqueList);
+
+// var myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
+// var myOrderedArray = myArray.reduce(function (accumulator, currentValue) {
+//     if (accumulator.indexOf(currentValue) === -1) {
+//         accumulator.push(currentValue);
+//     }
+//     return accumulator
+// }, [])
+//
+// console.log(myOrderedArray);
