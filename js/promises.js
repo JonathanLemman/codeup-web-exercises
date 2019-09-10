@@ -21,3 +21,9 @@ wait(3000).then(() => console.log('You\'ll see this after 3 seconds'));
 // 33e683853afe16decc1e781aba86975d4a64c591
 
 // fetch(url, {headers: {'Authorization': '33e683853afe16decc1e781aba86975d4a64c591'}});
+
+fetch('https://swapi.co/api/people/1')
+    .then(response => response.json())
+    .then(data => console.log(data))
+;
+
