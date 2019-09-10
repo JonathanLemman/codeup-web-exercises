@@ -24,6 +24,5 @@ wait(3000).then(() => console.log('You\'ll see this after 3 seconds'));
 
 fetch('https://swapi.co/api/people/1')
     .then(response => response.json())
-    .then(data => console.log(data))
-;
+    .then(data => console.log(data));
 
