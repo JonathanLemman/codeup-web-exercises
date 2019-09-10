@@ -2,7 +2,7 @@
 
 // ES5
 // function wait(num) {
-//     return new Promise(function (res, rej) {
+//     return new Promise(function (res) {
 //         setTimeout(function () {
 //             res();
 //         }, num)
@@ -10,7 +10,7 @@
 // }
 
 // ES6
-const wait = num => new Promise((res, rej) => setTimeout(() => res(), num));
+const wait = num => new Promise(res => setTimeout(() => res(), num));
 
 
 wait(1000).then(() => console.log('You\'ll see this after 1 second'));
