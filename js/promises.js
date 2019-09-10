@@ -10,19 +10,35 @@
 // }
 
 // ES6
-const wait = num => new Promise(res => setTimeout(() => res(), num));
+// const wait = num => new Promise(res => setTimeout(() => res(), num));
+//
+//
+// wait(1000).then(() => console.log('You\'ll see this after 1 second'));
+// wait(3000).then(() => console.log('You\'ll see this after 3 seconds'));
 
 
-wait(1000).then(() => console.log('You\'ll see this after 1 second'));
-wait(3000).then(() => console.log('You\'ll see this after 3 seconds'));
+
+function gitHubUser(username) {
+    return fetch(`https://api.github.com/users/${username}/events/public`, {headers: {'Authorization': `token ${gitToken}`}})
+        .then(response => response.json())
+        .then(data => filterData(data))
+        .then(data => console.log(data[0].created_at));
+}
+
+const filterData = data => data.filter(d => d.type === "PushEvent");
+
+gitHubUser('JonathanLemman');
 
 
 
-// 33e683853afe16decc1e781aba86975d4a64c591
 
-// fetch(url, {headers: {'Authorization': '33e683853afe16decc1e781aba86975d4a64c591'}});
 
-fetch('https://swapi.co/api/people/1')
-    .then(response => response.json())
-    .then(data => console.log(data));
+
+
+
+
+
+// fetch('https://swapi.co/api/people/1')
+//     .then(response => response.json())
+//     .then(data => console.log(data));
 
