@@ -91,6 +91,7 @@
 
     // PROBLEM 2 - create array of user objects based on the customers array
     // of objects (each user object should just have name and age properties)
+
     // ES5
     let customerObjects = customers.map(function (person) {
         return {name: person.name, age: person.age} ;
@@ -104,7 +105,9 @@
 
     // PROBLEM 3 - create an array of civil servant customers (teachers and police officers)
     // containing the same properties as the objects on the customers objects
+    let civilServants = customers.filter(servant => servant.occupation === 'Teacher' || servant.occupation === 'Police Officer');
 
+    // console.log(civilServants);
 
 
     // PROBLEM 4 - determine the average age of customers
