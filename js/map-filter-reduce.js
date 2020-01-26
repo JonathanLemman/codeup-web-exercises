@@ -40,7 +40,6 @@ const users = [
 // Use .filter to create an array of user objects where each user object has at least 3 languages in the languages array.
 users.filter(user => user.languages.length >= 3);
 
-
 // Use .map to create an array of strings where each element is a user's email address
 users.map(user => user.email);
 
@@ -63,12 +62,14 @@ let uniqueList = users.reduce((acc, currentUser) => {
 
 console.log(uniqueList);
 
-// var myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
-// var myOrderedArray = myArray.reduce(function (accumulator, currentValue) {
+// let myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
+// let myOrderedArray = myArray.reduce(function (accumulator, currentValue) {
 //     if (accumulator.indexOf(currentValue) === -1) {
 //         accumulator.push(currentValue);
 //     }
 //     return accumulator
-// }, [])
+// }, []);
 //
 // console.log(myOrderedArray);
+
+
