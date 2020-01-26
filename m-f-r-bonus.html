@@ -113,13 +113,21 @@
     let averageAgeOfCustomers = customers.reduce((total, customer) => {
         return total + customer.age / customers.length;
     }, 0);
-    console.log(averageAgeOfCustomers);
+    // console.log(averageAgeOfCustomers);
 
 
     // PROBLEM 5 - create a function makeSuperPet() that takes in the pets array as input and returns a single pet object
     // with the following shape...
+    function makeSuperPet(petsArray) {
+        let name = petsArray.map(pet => pet.name);
+        let allAges = petsArray.reduce((total, pet) => {
+            return total + pet.age;
+        }, 0);
+        let firstLetterOfPetBreed = petsArray.map(pet => pet.breed.charAt(0)).join("");
 
-
+        return {name, allAges, firstLetterOfPetBreed};
+    }
+    // console.log(makeSuperPet(pets));
 
         // {
         //     name: ALL_PET_NAMES_CONCATENATED_INTO_A_SINGLE_STRING,
@@ -130,13 +138,23 @@
 
     // PROBLEM 6 - take in an array of pets and return an array of the length of first names for pugs only
     // your output for the given input should be [3, 6] for 'Bud' and 'Bowser'
+    let pugOnly = pets.filter(pet => pet.breed === "Pug");
+    let lengthOfPugsNames = pugOnly.map(pug => pug.name.length);
+    // console.log(pugOnly);
+    // console.log(lengthOfPugsNames);
 
 
     // PROBLEM 7 - create a function getFemaleFamilyMembers() that when given the family variable as an argument,
     // returns an array of female family member names
+    function getFemaleFamilyMembers(family) {
+        return family.filter(member => member.gender === "female");
+    }
+    // console.log(getFemaleFamilyMembers(family));
+
 
     // PROBLEM 8 - create a function makeLongPetString() that when given the variable of pets,
     // returns a string of all property values with dashes separating each property value
+
 
     // PROBLEM 9 - create a function that when given an array of first names, returns an array of the same names with a last name of Smith
 
