@@ -110,7 +110,10 @@
 
 
     // PROBLEM 4 - determine the average age of customers
-
+    let averageAgeOfCustomers = customers.reduce((total, customer) => {
+        return total + customer.age / customers.length;
+    }, 0);
+    console.log(averageAgeOfCustomers);
 
 
     // PROBLEM 5 - create a function makeSuperPet() that takes in the pets array as input and returns a single pet object
