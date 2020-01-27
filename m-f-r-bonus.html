@@ -169,8 +169,16 @@
 
 
     // PROBLEM 10 - create a function that when given an array of numbers, returns the sum of even numbers
+    let arrOfNumbers = [1,5,12,5,7,2];
+    function sum(array){
+        return array.reduce((total, item) => {
+            return total + item;
+        }, 0);
+    }
+    // console.log(sum(arrOfNumbers));
 
     // PROBLEM 11 - create a function that when given an array of numbers, returns the sum of all numbers evenly divisible by 10
+
 
     // PROBLEM 12 - create a function that when given an array of names, returns a string of all the first letters of each name
 
