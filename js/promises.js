@@ -18,14 +18,14 @@
 
 
 
+const filterData = data => data.filter(d => d.type === "PushEvent");
+
 function gitHubUser(username) {
     return fetch(`https://api.github.com/users/${username}/events/public`, {headers: {'Authorization': `token ${gitToken}`}})
         .then(response => response.json())
         .then(data => filterData(data))
         .then(data => console.log(data[0].created_at));
 }
-
-const filterData = data => data.filter(d => d.type === "PushEvent");
 
 gitHubUser('JonathanLemman');
 

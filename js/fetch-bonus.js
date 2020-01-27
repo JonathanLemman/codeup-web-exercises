@@ -17,11 +17,11 @@
 //     e.preventDefault();
 // });
 //
-// function colorPreference(username) {
-//     return fetch(`../data/profiles.json`).then(response => response).then(data => data);
-// }
+function colorPreference(username) {
+    return fetch(`../data/profiles.json`).then(response => response).then(data => data);
+}
 //
-// console.log(colorPreference('sandy123'));
+console.log(colorPreference('sandy123'));
 
 
 
