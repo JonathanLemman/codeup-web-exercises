@@ -154,9 +154,15 @@
 
     // PROBLEM 8 - create a function makeLongPetString() that when given the variable of pets,
     // returns a string of all property values with dashes separating each property value
+    function makeLongPetString(pets){
+        let arr = pets.map(pet => `${pet.name} - ${pet.age} - ${pet.breed}`);
+        return arr.join(", ");
+    }
+    // console.log(makeLongPetString(pets));
 
 
     // PROBLEM 9 - create a function that when given an array of first names, returns an array of the same names with a last name of Smith
+
 
     // input = ['Sally', 'Fred', 'Steve']
     // output = ['Sally Smith', 'Fred Smith', 'Steve']
